@@ -15,9 +15,9 @@ var dispText = ""
 func _ready():
 	$"TextureProgress".value = muzzle_velocity
 	$"TextureProgress".max_value = 10*muzzleK
-	if global.g == 0:
+	if global.g == 1:
 		g1 = 100.0
-	elif global.g == 1:
+	elif global.g == 0:
 		rng.randomize()
 		g1 = float(rng.randi_range(0, 200))
 	elif global.g == 2:
@@ -26,9 +26,9 @@ func _ready():
 	else:
 		rng.randomize()
 		g1 = float(rng.randi_range(-200, 200))
-	if global.w == 0:
+	if global.w == 1:
 		wind1 = 100.0
-	elif global.w == 1:
+	elif global.w == 0:
 		rng2.randomize()
 		wind1 = float(rng.randi_range(0, 200))
 	elif global.w == 2:
@@ -37,9 +37,9 @@ func _ready():
 	else:
 		rng2.randomize()
 		wind1 = float(rng.randi_range(-200, 200))
-	if global.gInd == 0:
+	if global.gInd == 1:
 		dispText = dispText + "Gravity: "+str(g1)
-	if global.wInd == 0:
+	if global.wInd == 1:
 		dispText = dispText + "    Wind: "+str(wind1)
 	$"../RichTextLabel".text = dispText
 	$"../Sprite3".material.set_shader_param("strengthScale", wind1)
@@ -52,9 +52,9 @@ func _ready():
 		$"../Sprite4".scale.y = 0.3
 	else:
 		$"../Sprite4".scale.y = -0.3
-	if global.gInd == 1:
+	if global.gInd == 0:
 		$"../Sprite4".visible = false
-	if global.wInd == 1:
+	if global.wInd == 0:
 		$"../Sprite3".visible = false
 	
 

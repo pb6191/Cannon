@@ -9,8 +9,8 @@ extends OptionButton
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-	$".".add_item("constant")
 	$".".add_item("variable, only positive")
+	$".".add_item("constant")
 	$".".add_item("variable, only negative")
 	$".".add_item("variable, positive and negative")
 
