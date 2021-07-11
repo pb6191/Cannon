@@ -11,8 +11,10 @@ var rng2 = RandomNumberGenerator.new()
 var flipFlop
 var dispText = ""
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"../RichTextLabel2".text = "Score: "+str(global.currentScore)+"\nTries: "+str(global.tries)
 	$"TextureProgress".value = muzzle_velocity
 	$"TextureProgress".max_value = 10*muzzleK
 	if global.g == 1:
@@ -75,19 +77,31 @@ func shoot():
 var mousePressDur = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("leftClk") and get_tree().current_scene == $"..":
+	if flipFlop == "flip":
 		mousePressDur = mousePressDur + delta
 		muzzle_velocity = min(10*muzzleK, mousePressDur*3*muzzleK+muzzleK)
 		$"TextureProgress".value = muzzle_velocity
+	$"TextureProgress".rect_rotation = rad2deg(get_angle_to(get_global_mouse_position()))
+
+func _input(event):
+	if (event.is_action_pressed("leftClk") or (event is InputEventScreenTouch and event.pressed == true)) and get_tree().current_scene == $"..":
+		mousePressDur = 0.0
 		flipFlop = "flip"
-	if Input.is_action_just_released("leftClk") and get_tree().current_scene == $".." and flipFlop == "flip":
+	if (event.is_action_released("leftClk") or (event is InputEventScreenTouch and event.pressed == false)) and get_tree().current_scene == $".." and flipFlop == "flip":
 		shoot()
+		global.tries = global.tries + 1
+		$"../RichTextLabel2".text = "Score: "+str(global.currentScore)+"\nTries: "+str(global.tries)
 		muzzle_velocity = muzzleK
 		mousePressDur = 0.0
 		$"TextureProgress".value = muzzle_velocity
 		flipFlop = "flop"
-	$"TextureProgress".rect_rotation = rad2deg(get_angle_to(get_global_mouse_position()))
+
 
 
 func _on_Area2D_area_entered(area):
+	global.currentScore = global.currentScore + 100
+	$"../RichTextLabel2".text = "Score: "+str(global.currentScore)+"\nTries: "+str(global.tries)
+	$"../RichTextLabel3".visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().reload_current_scene()
+
