@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Sprite.gd" type="Script" id=1]
 [ext_resource path="res://progress.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://wind_2d.shader" type="Shader" id=8]
 [ext_resource path="res://fishing.png" type="Texture" id=9]
 [ext_resource path="res://ButtonBack.gd" type="Script" id=10]
+[ext_resource path="res://Node2D.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -38,6 +39,7 @@ shader_param/heightOffset = 0.0
 shader_param/direction = 4.0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 100, 500 )
@@ -126,5 +128,7 @@ text = "GOAL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 [connection signal="area_entered" from="Sprite2/Area2D" to="Sprite" method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

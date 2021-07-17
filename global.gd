@@ -11,6 +11,7 @@ var wInd
 var score
 var currentScore = 0
 var tries = 0
+var dict = {"thisSession": [{"gravityInd": "", "windInd": "", "gravity": "", "wind": "", "trials": [{"timeStart": "", "timePress": "", "timeRelease": "", "gravityVal": "", "windVal": "", "angle": "", "forceDuration": "", "success": "false"}]}]}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +21,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+

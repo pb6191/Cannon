@@ -18,4 +18,5 @@ func _ready():
 
 func _on_Button_pressed():
 	global.tries = global.tries - 1
+	global.dict.thisSession[global.dict.thisSession.size()-1].trials.pop_back()
 	get_tree().change_scene("res://Menu.tscn")

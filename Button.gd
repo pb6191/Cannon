@@ -22,4 +22,9 @@ func _on_Button_pressed():
 	global.gInd = $"../OptionButton".selected
 	global.wInd = $"../OptionButton2".selected
 	global.score = $"../OptionButton5".selected
+	global.dict.thisSession.append(global.dict.duplicate(true).thisSession[0])
+	global.dict.thisSession[global.dict.thisSession.size()-1].gravityInd = global.gInd
+	global.dict.thisSession[global.dict.thisSession.size()-1].windInd = global.wInd
+	global.dict.thisSession[global.dict.thisSession.size()-1].gravity = global.g
+	global.dict.thisSession[global.dict.thisSession.size()-1].wind = global.w
 	get_tree().change_scene("res://Node2D.tscn")
