@@ -129,6 +129,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="Button3" type="Button" parent="."]
+margin_left = 990.0
+margin_right = 1020.0
+margin_bottom = 30.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="Sprite2/Area2D" to="Sprite" method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
