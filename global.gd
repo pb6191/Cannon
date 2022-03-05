@@ -21,9 +21,9 @@ var closed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	http_client = HTTPClient.new()
-	connErr = http_client.connect_to_host("192.168.0.12", 8081)
-	while(http_client.get_status() != 5):
-		http_client.poll()
+	#connErr = http_client.connect_to_host("192.168.0.12", 8081)
+	#while(http_client.get_status() != 5):
+	#	http_client.poll()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
